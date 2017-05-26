@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+  <include('../includes/head.marko')/>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+<include('../includes/header.marko')/>
+<include('../includes/sidemenu.marko')/>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      
+          <div ng-view>
+          </div>
+    </section>
+    <!-- /.content -->
+  </div>
+<include('../includes/footer.marko')/>
+</div>
+<!-- ./wrapper -->
+<include('../includes/script.marko')/>
+</body>
+</html>

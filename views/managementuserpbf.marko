@@ -1,0 +1,108 @@
+<section class="content-header">
+    <h1>
+    User RS
+    <small>Data User RS</small>
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">User RS</li>
+    </ol>
+</section>
+<br>
+<div class="box box-primary">
+    <div class="box-header">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> Tambah Data </button>  
+         <button class="btn btn-danger"><i class="fa fa-user-times"></i> Block User </button>
+    </div>
+    <div class="box-body">
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Tambah Data User</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" ng-model="nama">
+                </div>
+                 <div class="form-group">
+                    <label>Level</label>
+                    <select type="text" class="form-control" ng-model="level">
+                        <option value="rumah sakit">Rumah Sakit</option>
+                        <option value="pbf">PBF</option>
+                        <option value="administrator">Administrator</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" ng-model="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" ng-model="password">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" ng-click="simpan()"><i class="fa fa-send"></i> Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    <div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Ubah Data User</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" ng-model="nama">
+                </div>
+                 <div class="form-group">
+                    <label>Level</label>
+                    <select type="text" class="form-control" ng-model="level">
+                        <option value="rumah sakit">Rumah Sakit</option>
+                        <option value="pbf">PBF</option>
+                        <option value="administrator">Administrator</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" ng-model="email">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-success" ng-click="actionedit()"><i class="fa fa-send"></i> Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+        </div>
+         <table ng-table="tableParams" class="table table-striped" show-filter="true">
+                <tr ng-repeat="user in $data">
+                <td title="'uid'" filter="{ uid: 'text'}" sortable="'uid'">
+                            {{user.uid}}</td>
+                    <td title="'nama'" filter="{ nama: 'text'}" sortable="'nama'">
+                            {{user.nama}}</td>
+                     <td title="'username'" filter="{ username: 'text'}" sortable="'username'">
+                            {{user.username}}</td>
+                    <td title="'level'"  sortable="'level'">
+                            {{user.level}}</td>
+                    <td title="'gambar'" sortable="'gambar'">
+                            <img ng-src="{{user.gambar}}" width="100" height="100"></td>
+                    <td title="'status'" sortable="'labor_charge'">
+                            {{user.status}}</td>
+                    <td title="'Action'">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#myModal1" ng-click="edit(user)"><i class="fa fa-edit"></i> Edit</button> <button class="btn btn-danger" ng-click="hapus(user)"><i class="fa fa-trash"></i> Hapus</button>
+                    </td>
+                </tr>
+        </table>
+    </div>
+</div>
