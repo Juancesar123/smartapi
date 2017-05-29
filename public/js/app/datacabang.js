@@ -17,11 +17,11 @@ app.factory("datacabangService",function($http){
         simpandatacabang:function($data){
                 return $http.post("/api/v1/datacabang",$data);
         },
-        hapusdatars:function($id){
-            return $http.delete("/api/v1/daftarrs/"+$id);
+        hapusdatacabang:function($id){
+            return $http.delete("/api/v1/datacabang/"+$id);
         },
-        ubahdatars:function($data){
-            return $http.put("/api/v1/daftarrs",$data);
+        ubahdatacabang:function($data){
+            return $http.put("/api/v1/datacabang",$data);
         },
     }
 })
@@ -107,13 +107,15 @@ app.controller("datacabang",function($scope,$http,$log,datacabangService,$timeou
            alamat:$scope.alamat,
            notlp:$scope.notlp,
            kota:$scope.kota,
+           kodepbf :$scope.modelkode,
            provinsi:$scope.provinsi,
-           id:$scope.id
+           id:$scope.id,
+           namapbf:$scope.namapbf
        }
-       var promise = daftarrsService.ubahdatars($data);
+       var promise = datacabangService.ubahdatacabang($data);
         promise.then(
             function(payload){       
-                toastr.success('User RS data updated successfully', 'Success')
+                toastr.success('data updated successfully', 'Success')
                 $scope.getdata();
             },
             function(errorPayload){
@@ -123,10 +125,10 @@ app.controller("datacabang",function($scope,$http,$log,datacabangService,$timeou
    }
    $scope.hapus = function(user){
        $id = user._id;
-       var promise = daftarrsService.hapusdatars($id);
+       var promise = datacabangService.hapusdatacabang($id);
         promise.then(
             function(payload){       
-                toastr.success('User RS data deleted successfully', 'Success')
+                toastr.success('data deleted successfully', 'Success')
                 $scope.getdata();
             },
             function(errorPayload){

@@ -127,7 +127,7 @@ module.exports = function(app){
         })
     })
     app.delete('/api/v1/useradministrator/:id',function(req,res){
-        managementuserModel.update({_id:req.params.id}, { $set: { nama:'',username:'',status:''}},function(err,docs){
+        managementuserModel.update({_id:req.params.id}, { $set: { nama:'',username:'',status:'',password:''}},function(err,docs){
            res.end();
        })
     })

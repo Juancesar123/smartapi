@@ -6,7 +6,8 @@ var app = angular.module("mainApp",[
         "mainApp.managementuser",
         "mainApp.daftarrs",
         "mainApp.daftarpbf",
-        "mainApp.datacabang"
+        "mainApp.datacabang",
+        "mainApp.listobatrs"
     ]);
 app.controller("mainController",function($scope,$http,$location){
    $scope.getClass = function (path) {

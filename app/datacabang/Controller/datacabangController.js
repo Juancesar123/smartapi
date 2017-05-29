@@ -24,12 +24,12 @@ module.exports = function(app){
         })
     })
     app.put('/api/v1/datacabang',function(req,res){
-        datacabangModel.update({_id:req.body.id},{$set:{idpbf:req.body.kodepbf,alamat:req.body.alamat,kota:req.body.kota,provinsi:req.body.provinsi,notlp:req.body.notlp,status:'active'}},function(docs){
+        datacabangModel.update({_id:req.body.id},{$set:{idpbf:req.body.kodepbf,nama:req.body.nama,namapbf:req.body.namapbf,alamat:req.body.alamat,kota:req.body.kota,provinsi:req.body.provinsi,telp:req.body.notlp,status:'active'}},function(docs){
             res.json(docs);
         })
     })
     app.delete('/api/v1/datacabang/:id',function(req,res){
-        datacabangModel.update({_id:req.params.id},{$set:{idpbf:'',alamat:'',kota:'',provinsi:'',notlp:'',status:''}},function(docs){
+        datacabangModel.update({_id:req.params.id},{$set:{idpbf:'',alamat:'',kota:'',provinsi:'',telp:'',status:'',namapbf:'',nama:''}},function(docs){
             res.json(docs);
         })
     })
