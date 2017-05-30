@@ -5,4 +5,5 @@
     require("../app/daftarpbf/Controller/daftarpbfController")(app,multer);
     require("../app/datacabang/Controller/datacabangController")(app,multer);
     require("../app/listobatrs/Controller/listobatController")(app,multer);
+    require("../app/listobatpbf/Controller/listobatpbfController")(app,multer);
 }
