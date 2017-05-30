@@ -32,4 +32,9 @@ module.exports = function(app){
             res.end();
         })
     })
+     app.get('/api/v1/carikode/:id',function(req,res){
+        daftarrsModel.findOne({uid:req.params.id}).exec().then(function(docs){
+            res.json(docs);
+        })
+    })
 }

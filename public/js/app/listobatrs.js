@@ -11,6 +11,12 @@ app.config(function($routeProvider) {
         simpandataobat:function($data){
                 return $http.post("/api/v1/listobatrs",$data);
         },
+        ambildatars:function($data){
+            return $http.get("/api/v1/daftarrs",$data);
+        },
+        carikodeaja:function($id){
+            return $http.get("/api/v1/carikode/"+$id);
+        },
         hapusdataobat:function($id){
             return $http.delete("/api/v1/listobatrs/"+$id);
         },
@@ -37,20 +43,47 @@ app.controller("listobatrs",function($scope,$http,$log,listobatrsService,$timeou
              });
         });
    }
+   $scope.getdatars = function(){
+        var promise = listobatrsService.ambildatars();
+        promise.then(
+            function(payload){       
+               $scope.carikoders = payload.data;
+            },
+            function(errorPayload){
+                $log.error('failure loading data',errorPayload);
+            }
+        )
+   }
+   $scope.carikode = function(){
+        $id = $scope.koders;
+       var promise = listobatrsService.carikodeaja($id);
+        promise.then(
+            function(payload){       
+               $scope.namars = payload.data.nama;
+            },
+            function(errorPayload){
+                $log.error('failure loading data',errorPayload);
+            }
+        )
+   }
+   $scope.getdatars();
    $scope.getdata();
     $scope.simpan = function (){
        $data = {
-           kode :'PBF-'+Math.floor((Math.random() * 100000) + 1),
+           kodeobat :'OBRS-'+Math.floor((Math.random() * 100000) + 1),
+           koders:$scope.koders,
+           namars:$scope.namars,
            nama:$scope.nama,
-           alamat:$scope.alamat,
-           notlp:$scope.notlp,
-           kota:$scope.kota,
-           provinsi:$scope.provinsi
+           satuanbesar:$scope.satuanbesar,
+           satuankecil:$scope.satuankecil,
+           konversi:$scope.konversi,
+           hargabesar:$scope.hargabesar,
+           hargakecil:$scope.hargakecil
        }
        var promise = listobatrsService.simpandataobat($data);
         promise.then(
             function(payload){       
-                toastr.success('Data PBF saved successfully', 'Success')
+                toastr.success('Data Obat saved successfully', 'Success')
                 $scope.getdata();
             },
             function(errorPayload){
@@ -60,25 +93,32 @@ app.controller("listobatrs",function($scope,$http,$log,listobatrsService,$timeou
    }
    $scope.edit = function(user){
        $scope.nama = user.nama;
-       $scope.kota = user.kota;
-       $scope.alamat = user.alamat;
-       $scope.provinsi = user.provinsi;
-       $scope.notlp = user.nomortelpon;
+       $scope.koders = user.koders;
+       $scope.namars = user.namars;
+       $scope.satuankecil = user.satuankecil;
+       $scope.satuanbesar = user.satuanbesar;
+       $scope.hargabesar = user.hargabesar;
+       $scope.hargakecil = user.hargakecil;
+       $scope.konversi = user.konversi;
        $scope.id = user._id;
    }
    $scope.actionedit = function(){
         $data = {
+           kodeobat :'OBRS-'+Math.floor((Math.random() * 100000) + 1),
+           koders:$scope.koders,
+           namars:$scope.namars,
            nama:$scope.nama,
-           alamat:$scope.alamat,
-           notlp:$scope.notlp,
-           kota:$scope.kota,
-           provinsi:$scope.provinsi,
+           satuanbesar:$scope.satuanbesar,
+           satuankecil:$scope.satuankecil,
+           konversi:$scope.konversi,
+           hargabesar:$scope.hargabesar,
+           hargakecil:$scope.hargakecil,
            id:$scope.id
        }
        var promise = listobatrsService.ubahdataobat($data);
         promise.then(
             function(payload){       
-                toastr.success('Data PBF updated successfully', 'Success')
+                toastr.success('Data Obat updated successfully', 'Success')
                 $scope.getdata();
             },
             function(errorPayload){

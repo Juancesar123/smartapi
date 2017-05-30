@@ -8,6 +8,7 @@ module.exports =  mongoose.model('ListObatRS', {
         konversi : {type : String, default: ''},
         hargabesar : {type : String, default: ''},
         hargakecil : {type : String, default: ''},
-        aktif : {type : String, default: ''},
+        namars:{type: String,default:''},
+        status : {type : String, default: 'active'},
         created_at : {type : Date, default: Date.now()},
 });

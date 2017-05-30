@@ -29,8 +29,8 @@
                 </div>
                  <div class="form-group">
                     <label>Kode Rs</label>
-                    <select class="form-control" ng-model="koders" ng-change="carikode">
-                        <option ng-repeat="item in carikoders" value="{{item.kode}}">{{item.kode}}</option>
+                    <select class="form-control" ng-model="koders" ng-change="carikode()">
+                        <option ng-repeat="item in carikoders" value="{{item.uid}}">{{item.uid}}</option>
                     </select>
                 </div>
                  <div class="form-group">
@@ -52,6 +52,10 @@
                  <div class="form-group">
                     <label>Harga Besar</label>
                     <input type="text" class="form-control" ng-model="hargabesar">
+                </div>
+                 <div class="form-group">
+                    <label>Harga Kecil</label>
+                    <input type="text" class="form-control" ng-model="hargakecil">
                 </div>
             </div>
             <div class="modal-footer">
@@ -76,8 +80,8 @@
                 </div>
                  <div class="form-group">
                     <label>Kode Rs</label>
-                    <select class="form-control" ng-model="koders" ng-change="carikode">
-                        <option ng-repeat="item in carikoders" value="{{item.kode}}">{{item.kode}}</option>
+                    <select class="form-control" ng-model="koders" ng-change="carikode()">
+                        <option ng-repeat="item in carikoders" value="{{item.uid}}">{{item.uid}}</option>
                     </select>
                 </div>
                  <div class="form-group">
@@ -100,6 +104,10 @@
                     <label>Harga Besar</label>
                     <input type="text" class="form-control" ng-model="hargabesar">
                 </div>
+                <div class="form-group">
+                    <label>Harga Kecil</label>
+                    <input type="text" class="form-control" ng-model="hargakecil">
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-success" ng-click="actionedit()"><i class="fa fa-send"></i> Submit</button>
@@ -117,6 +125,8 @@
                             {{user.kodeobat}}</td>
                     <td title="'kode RS'" filter="{ koders: 'text'}" sortable="'koders'">
                             {{user.koders}}</td>
+                     <td title="'Nama RS'" filter="{ namars: 'text'}" sortable="'namars'">
+                            {{user.namars}}</td>
                      <td title="'Nama'" filter="{ nama: 'text'}" sortable="'nama'">
                             {{user.nama}}</td>
                     <td title="'Satuan Besar'"  sortable="'satuanbesar'" filter="{ satuanbesar: 'text'}">
